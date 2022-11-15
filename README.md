@@ -1,2 +1,21 @@
 # agent_based_simulation
 Agent Based Simulation with Python: Irish Political Spectrum 
+
+Theory and overview of the simulation 
+
+The project consists of implementing a simulation where parties and voters move in the political spectrum. The idea follows Michael Laver  ’s paper Policy and the dynamics of political competition and research. 
+The simulation is an agent model simulation where we simulate behaviours of groups of agents (multiple agents) and their interactions but always based on individual-level behaviour.
+We have a random list of parties that move in the political spectrum following different strategies to maximise the number of votes. The parties’ strategies are aggregator, sticker, random, hunter and predator. The voters in the model are given random coordinates and they then vote for the nearest party. 
+
+
+Group’s 3 simulation consists of main.py, menu.py, simulation.py, party.py, voter.py and location.py. 
+In the main.py the menu and the simulation were imported, and the menu was run. 
+In the menu.py the object menu was built by means of the constructor function which calls the object simulation. Then there is a function that allows the menu to run. The menu is a user menu where the user is asked to interact and insert input based on prompts. At the moment the user can: add a sticker, a hunter, an aggregator, a predator party and a random party. It can ask for the list of all the parties and decide the number of times (loops) the simulation has to run for. Last prompt of the menu is to quit the program. Overall, the function to run the menu is made of a while loop and conditionals statements.
+The object simulation has itself and a list of parties as parameters and it constitutes of several functions. The function generate_voters takes in a given number with a for loop and it adds a voter to a list of voters a number of times and returns that list. The function print_parties prints a party’s name, strategy and coordinates via a for loop. The function generate_party creates a party with the strategy passed from the menu. The function run_election runs the election and returns the votes for each voter. In this function the user is required to type two inputs: voters uses the function genrate_voters (which is how many voters the user typed). While the index is less than the time-period, every voter casts its vote for the nearest party. These votes are added to a list votes = []
+At last, print_vote_count counts how many votes for each party: number_of_votes uses the function count_votes from class Party and it prints the party name and the number of votes associated with it. 
+Moving onto the object party, its attributes are name, strategy, location (which works with the class location) and list of voters. The function add_voter appends a voter to the list of voters of a specific party. Finally, count_votes counts the votes in the list of voters by returning the length of the list of voters. 
+Object voter’s attributes are the voter location (which works as well with class location). The voter votes through the function vote via means of a for loop.
+Finally, object location is made of x and y (which then are going to compose coordinates). The function distance is built upon the Euclidean distance formula. 
+After this the strategies behaviours and movements in the political spectrum were implemented and then having the voters move accordingly. As well as fixing the function in the voter class, since it was better to have it saving the party object as a whole instead of the index_of_nearest_party.
+We created a Log class for recording the main events and add it to the Simulation class, which also meant recording all the different steps of the simulation and updating the simulation code accordingly. We also implemented a Tracker class which collected all the relevant information, in the mentioned class there is a export_to_csv() function. We then called this method at the end of the simulation loop. Finally, there is functionality to import a configuration file with all the settings for the simulation and a prompt in the menu to have the program reading the simulation from this configuration file. 
+In the last lesson it was showed how importing the simulation written in Python in R Studio allowed to show the graphs displaying the variations in the simulation. 
